@@ -1,0 +1,200 @@
+/* ---------------- Imports ---------------- */
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+/* Enable dark variant */
+@custom-variant dark (&:is(.dark *));
+
+/* Tailwind v4 Theme Configuration */
+@theme {
+  --color-textPrimary: var(--text-primary);
+  --color-textSecondary: var(--text-secondary);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-bgPage: var(--bg-page);
+  --color-bgCard: var(--bg-card);
+  --color-bgHover: var(--bg-hover);  
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  
+  --radius: 0.625rem;
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+/* ---------------- Root (Light Theme) ---------------- */
+:root {
+  /* --------- Brand Colors ------------ */
+  --primary: rgb(37, 99, 235);
+  --success: rgb(22, 163, 74);
+  --warning: rgb(234, 179, 8);
+  --danger: rgb(239, 68, 68);
+
+  /* --------- Text Colors ------------ */
+  --text-primary: rgb(17, 24, 39);
+  --text-secondary: rgb(75, 85, 99);
+  --text-muted: rgb(107, 114, 128);
+
+  /* --------- Backgrounds ------------ */
+  --bg-page: rgb(249, 250, 251);
+  --bg-card: rgb(255, 255, 255);
+  --bg-hover: rgb(243, 244, 246);
+
+  /* --------- Border ------------ */
+  --border: rgb(229, 231, 235);
+
+  /* --------- Typography ------------ */
+  --font-sans: 'Geist Variable', system-ui, sans-serif;
+  --font-heading: 'Geist Variable', system-ui, sans-serif;
+  --font-mono: ui-monospace, Consolas, monospace;
+
+  /* --------- Layout ------------ */
+  --radius: 0.625rem;
+
+  /* --------- Shadcn Mapping ------------ */
+  --background: var(--bg-page);
+  --foreground: var(--text-primary);
+
+  --card: var(--bg-card);
+  --card-foreground: var(--text-primary);
+
+  --popover: var(--bg-card);
+  --popover-foreground: var(--text-primary);
+
+  --primary-foreground: rgb(255, 255, 255);
+
+  --secondary: var(--bg-hover);
+  --secondary-foreground: var(--text-primary);
+
+  --muted: var(--bg-hover);
+  --muted-foreground: var(--text-muted);
+
+  --accent: var(--primary);
+  --accent-foreground: rgb(255, 255, 255);
+
+  --destructive: var(--danger);
+  --destructive-foreground: rgb(255, 255, 255);
+
+  --input: var(--border);
+  --ring: var(--primary);
+}
+
+/* ---------------- Dark Theme ---------------- */
+.dark {
+  /* --------- Brand Colors ------------ */
+  --primary: rgb(59, 130, 246);
+  --success: rgb(34, 197, 94);
+  --warning: rgb(250, 204, 21);
+  --danger: rgb(248, 113, 113);
+
+  /* --------- Text Colors ------------ */
+  --text-primary: rgb(249, 250, 251);
+  --text-secondary: rgb(209, 213, 219);
+  --text-muted: rgb(156, 163, 175);
+
+  /* --------- Backgrounds ------------ */
+  --bg-page: rgb(3, 7, 18);
+  --bg-card: rgb(17, 24, 39);
+  --bg-hover: rgb(31, 41, 55);
+
+  /* --------- Border ------------ */  
+  --border: rgb(177, 169, 168);
+
+  /* --------- Shadcn Mapping ------------ */
+  --background: var(--bg-page);
+  --foreground: var(--text-primary);
+
+  --card: var(--bg-card);
+  --card-foreground: var(--text-primary);
+
+  --popover: var(--bg-card);
+  --popover-foreground: var(--text-primary);
+
+  --primary-foreground: rgb(255, 255, 255);
+
+  --secondary: var(--bg-hover);
+  --secondary-foreground: var(--text-primary);
+
+  --muted: var(--bg-hover);
+  --muted-foreground: var(--text-muted);
+
+  --accent: var(--primary);
+  --accent-foreground: rgb(255, 255, 255);
+
+  --destructive: var(--danger);
+  --destructive-foreground: rgb(255, 255, 255);
+
+  --input: var(--border);
+  --ring: var(--primary);
+}
+
+/* ---------------- Base Styles ---------------- */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    margin: 0;
+  }
+
+  #root {
+    margin: 0 auto;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    border-inline: 1px solid var(--border);
+  }
+
+  h1, h2 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+  }
+
+  h1 {
+    font-size: 56px;
+    margin: 32px 0;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    background: var(--bg-hover);
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+}
